@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
+    <script src="ammo.js"></script>
+    <script src="script.js"></script>
+    <script src="kinema.js"></script>
+    <script src="plants.js"></script>
+  </head>
+  <body>
+    <a-scene light="defaultLightsEnabled: false">
+      <a-entity environment="preset: yavapai; fog: 0; shadow: true; shadowSize: 4;light-position: 100;stageSize: 220;"></a-entity>
+      <a-sky color="#ECECEC"></a-sky>
+      <a-entity id="AlienHouses">
+        <a-sphere shadow="receive: true" src="dirt.jpg" position="3 .2 -2" rotation="0 0 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
+        <a-sphere shadow="receive: true" src="dirt.jpg" position="-5 .2 -9" rotation="0 110 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
+        <a-sphere shadow="receive: true" src="dirt.jpg" position="-9 .2 -2" rotation="0 200 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
+        <a-entity id="campfire" position="-4 0 -3">
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="-90 0 0" color="brown"></a-cylinder>
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="180 0 90" color="brown"></a-cylinder>
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="90 0 40" color="brown"></a-cylinder>
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="90 40 180" color="brown"></a-cylinder>
+        </a-entity>
+      </a-entity>
+      <a-entity position="-10 0 12" id="AlienHouses">
+        <a-sphere shadow="receive: true" src="dirt.jpg" position="3 .2 -2" rotation="0 0 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
+        <a-sphere shadow="receive: true" src="dirt.jpg" position="-5 .2 -9" rotation="0 110 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
+        <a-sphere shadow="receive: true" src="dirt.jpg" position="-9 .2 -2" rotation="0 200 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
+        <a-entity id="campfire" position="-4 0 -3">
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="-90 0 0" color="brown"></a-cylinder>
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="180 0 90" color="brown"></a-cylinder>
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="90 0 40" color="brown"></a-cylinder>
+        <a-cylinder position="0 0 0" radius=".1" length="1.2" rotation="90 40 180" color="brown"></a-cylinder>
+        </a-entity>
+      </a-entity>
+
+      <a-asset_item id="alien" src="alien_walk/scene.gltf"></a-asset_item>
+      <a-asset_item id="plants" src="alien_plants/scene.gltf"> </a-asset_item>
+      <a-gltf-model  src="#alien" scale="3 3 3" position="0 -10 0" animation-mixer></a-gltf-model>
+      <a-gltf-model  src="#plants" scale="0.1 0.1 0.1" position="5 -10 5"></a-gltf-model>
+        <a-camera light="type:point;castShadow:true;intensity:10;" position="30 2.2 0">
+          <a-cursor>
+            <a-text id="time" value="Time Elapsed: 6767" position="-3.3 1.6 -1" width="2"></a-text>
+          </a-cursor>
+        </a-camera>
+    </a-scene>

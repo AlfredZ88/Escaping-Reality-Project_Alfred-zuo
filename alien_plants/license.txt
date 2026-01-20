@@ -1,0 +1,11 @@
+Model Information:
+* title:	Alien Plants
+* source:	https://sketchfab.com/3d-models/alien-plants-dee069375b66499896f4eb1a3ba1d3eb
+* author:	KrisWT (https://sketchfab.com/KrisWT)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Alien Plants" (https://sketchfab.com/3d-models/alien-plants-dee069375b66499896f4eb1a3ba1d3eb) by KrisWT (https://sketchfab.com/KrisWT) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
