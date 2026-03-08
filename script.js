@@ -1,9 +1,16 @@
 let rnd = (l,u) => Math.random() * (u-l) + l;
 let scene, mainCamera, time, m = 0, s = 0, scrapMetal, sm = 0, totalParts = 0;
-let aliens = [], plants=[], rocks=[], scraps = [], plantsModel, plant2Model, collected_parts;
+let aliens = [], plants=[], rocks=[], scraps = [], plantsModel, plant2Model, collected_parts, Rocket;
+let heart1, heart2, heart3, heart4, heart5;
 
 window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene");
+  heart1 = document.querySelector("#heart1");
+  heart2 = document.querySelector("#heart2");
+  heart3 = document.querySelector("#heart3");
+  heart4 = document.querySelector("#heart4");
+  heart5 = document.querySelector("#heart5");
+  Rocket = document.querySelector("#Rocket");
   plantsModel = document.querySelector("#plants");
   plant2Model = document.querySelector("#plant2");
   mainCamera = document.querySelector("#mainCamera");
@@ -32,24 +39,31 @@ window.addEventListener("DOMContentLoaded",function() {
 
   for(let i = 0; i < 4; i++){
     let x = rnd(-20,5);
-    let z = rnd(-3,5);
+    let z = rnd(-10,5);
     let alien = new Alien(x,0,z);
     aliens.push(alien);
   }
 
-  for(let i=0; i <10; i++){
+  for(let i=0; i <15; i++){
     let x = rnd(-20,20);
     let z = rnd(-20,20);
     let scrap = new Scrap(x, .5, z);
     scraps.push(scrap);
   }
 
-
   window.addEventListener("keypress",function(e){
     if(e.key == " "){
       mainCamera.setAttribute("light","type:point;castShadow:true;intensity:10;");
     }else if(e.key == "q"){
       mainCamera.setAttribute("light", "type:point;castShadow:true;intensity:0;");
+    }
+  })
+
+  Rocket.addEventListener("click", ()=>{
+    if(totalParts >= 15){
+      console.log("Fixed");
+    }else if(totalParts < 15){
+      console.log("Missing Parts");
     }
   })
   countTime();
@@ -67,26 +81,27 @@ function countTime(){
   setTimeout(countTime,1000);
 }
 
-function partCount(){
+ function partCount(){
   collected_parts.setAttribute("value", `Scrap Metal Collected: ${totalParts} /15`);
 }
 
 function loop(){
   for(let alien of aliens){
-    //if(distance(aliens.obj, mainCamera) < 5){
+    alien.stop();
+    if(distance(mainCamera, alien.obj) < 5){
     alien.rotateTowards(mainCamera);
-    //alien.forward();
-  //}
+    alien.forward();
+    if(distance(mainCamera, alien.obj)< 2.3){
+    }
+    
+  }
   }
 
   for(let scrap of scraps){
-    scrap.spin();
-
-  }
-  
-      window.requestAnimationFrame(loop);
   }
 
+  window.requestAnimationFrame(loop);
+}
 
 
 

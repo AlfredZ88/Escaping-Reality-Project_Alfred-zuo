@@ -3,19 +3,28 @@ class Scrap{
     this.x = x;
     this.y = y;
     this.z = z;
-    this.dy = 1.2;
+    this.dx = .7;
 
     this.obj = document.createElement("a-gltf-model");
     this.obj.setAttribute("src", "#scrapMetal");
     this.obj.setAttribute("scale", ".2 .2 .2");
-    this.obj.setAttribute("position", {x:this.x, y:this.y, z:this.z});
+    this.obj.setAttribute("position", {x:x, y:y, z:z});
     scene.append(this.obj);
-    }
+    
+    this.obj.addEventListener("click", ()=>{
+      if(distance(mainCamera, this.obj) < 2.7){
+        totalParts += 1;
+        this.obj.setAttribute("position", "0 -10 0")
+        partCount();
+      }
+    });
+  }
+
 
 
     spin(){
-      this.y += this.dy;
-      this.obj.setAttribute("rotation", {x:0, y:this.y, z:0});
+      this.x += this.dx;
+      this.wrap.setAttribute("rotation", {x:this.dx, y:0, z:0});
     }
 
 }

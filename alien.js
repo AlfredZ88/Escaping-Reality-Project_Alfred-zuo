@@ -1,9 +1,10 @@
-class Alien {
+class Alien{
     constructor(x,y,z){
         this.x = x;
         this.y = y;
         this.z = z;
-        this.dz = .01;
+        this.speed = 0.01;
+        this.charge = "mixamo.com";
 
         this.obj = document.createElement("a-gltf-model");
         this.obj.setAttribute("src","#alien");
@@ -12,6 +13,7 @@ class Alien {
         this.obj.setAttribute("position",{x:x,y:0,z:z});
         // this.obj.setAttribute("rotation", "0 180 0")
         scene.append(this.obj);
+
     }
     // All FROM FNAF GAME - Start
     angleTo(that){
@@ -28,11 +30,11 @@ class Alien {
       this.obj.object3D.rotation.y = this.angle;
   }
   forward(){
-      let dx = this.model.speed * Math.sin(this.angle);
-      let dz = this.model.speed * Math.cos(this.angle);
+      let dx = this.speed * Math.sin(this.angle);
+      let dz = this.speed * Math.cos(this.angle);
       this.obj.object3D.position.x += dx;
       this.obj.object3D.position.z += dz; 
-      this.obj.setAttribute("animation-mixer",{clip:this.model.charge, timeScale:0.75});
+      this.obj.setAttribute("animation-mixer",{clip:this.charge, timeScale:0.75});
   }
   stop(){
     this.obj.setAttribute("animation-mixer",{timeScale:0});
