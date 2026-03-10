@@ -1,7 +1,7 @@
 let rnd = (l,u) => Math.random() * (u-l) + l;
-let scene, mainCamera, time, m = 0, s = 0, scrapMetal, sm = 0, totalParts = 0;
+let scene, mainCamera, time, m = 0, s = 0, scrapMetal, sm = 0, totalParts = 0, heart = 5;
 let aliens = [], plants=[], rocks=[], scraps = [], plantsModel, plant2Model, collected_parts, Rocket;
-let heart1, heart2, heart3, heart4, heart5;
+let heart1, heart2, heart3, heart4, heart5, cooldown = 200;
 
 window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene");
@@ -86,12 +86,32 @@ function countTime(){
 }
 
 function loop(){
+
+  if(cooldown > 0){
+    cooldown -= 1;
+  }
+
   for(let alien of aliens){
     alien.stop();
     if(distance(mainCamera, alien.obj) < 5){
     alien.rotateTowards(mainCamera);
     alien.forward();
-    if(distance(mainCamera, alien.obj)< 2.3){
+
+    if(distance(mainCamera, alien.obj)< 2.3 && cooldown == 0){
+      heart -= 1;
+      cooldown = 200;
+
+    }if(heart == 4){
+      heart5.setAttribute("src", "h_eart.png");
+    }if(heart == 3){
+      heart4.setAttribute("src", "h_eart.png");
+    }if(heart == 2){
+      heart3.setAttribute("src", "h_eart.png");
+    }if(heart == 1){
+      heart2.setAttribute("src", "h_eart.png");
+    }else if(heart == 0){
+      heart1.setAttribute("src", "h_eart.png");
+      console.log("Game Over");
     }
     
   }

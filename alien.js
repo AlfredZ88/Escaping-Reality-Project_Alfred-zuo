@@ -41,12 +41,7 @@ class Alien{
   }
   // All FROM FNAF GAME - End
   
-    // roam(){
-        // this.z += this.dz;
-        // this.obj.setAttribute("position", {x:this.x, y:0, z:this.z})
-        // if(distance(this.obj, document.querySelector("#AlienHouses")) > 15){
-            //this.obj.setAttribute("rotation", "0 180 0");
-            //this.dz = -this.dz;
-        //}
-    //}
+     roam(){
+        
+    }
 }
