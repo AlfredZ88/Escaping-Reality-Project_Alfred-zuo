@@ -3,7 +3,7 @@ class Alien{
         this.x = x;
         this.y = y;
         this.z = z;
-        this.speed = 0.01;
+        this.speed = 0.025;
         this.charge = "mixamo.com";
 
         this.obj = document.createElement("a-gltf-model");
@@ -34,7 +34,7 @@ class Alien{
       let dz = this.speed * Math.cos(this.angle);
       this.obj.object3D.position.x += dx;
       this.obj.object3D.position.z += dz; 
-      this.obj.setAttribute("animation-mixer",{clip:this.charge, timeScale:0.75});
+      this.obj.setAttribute("animation-mixer",{clip:this.charge, timeScale:1});
   }
   stop(){
     this.obj.setAttribute("animation-mixer",{timeScale:0});
@@ -42,6 +42,23 @@ class Alien{
   // All FROM FNAF GAME - End
   
      roam(){
+        let point1 = document.querySelector("#point1");
+        let point2 = document.querySelector("#point2");
+        let point3 = document.querySelector("#point3");
+        let point4 = document.querySelector("#point4");
+        let point5 = document.querySelector("#point5");
+        let point6 = document.querySelector("#point6");
+
+        let points = [point1, point2, point3, point4, point5, point6];
         
+        if(Math.random() < 0.0055){
+            this.target = points[Math.floor(Math.random() * points.length)];
+        }
+        
+        if(this.target){
+        this.rotateTowards(this.target);
+        this.forward();
+        }
+
     }
 }

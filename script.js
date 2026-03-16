@@ -1,7 +1,7 @@
 let rnd = (l,u) => Math.random() * (u-l) + l;
 let scene, mainCamera, time, m = 0, s = 0, scrapMetal, sm = 0, totalParts = 0, heart = 5;
 let aliens = [], plants=[], rocks=[], scraps = [], plantsModel, plant2Model, collected_parts, Rocket;
-let heart1, heart2, heart3, heart4, heart5, cooldown = 200;
+let heart1, heart2, heart3, heart4, heart5, cooldown = 200, lightON = false; // point1, point2, point3;
 
 window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene");
@@ -10,6 +10,9 @@ window.addEventListener("DOMContentLoaded",function() {
   heart3 = document.querySelector("#heart3");
   heart4 = document.querySelector("#heart4");
   heart5 = document.querySelector("#heart5");
+  // point1 = document.querySelector("#point1");
+  // point2 = document.querySelector("#point2");
+  point3 = document.querySelector("#point3");
   Rocket = document.querySelector("#Rocket");
   plantsModel = document.querySelector("#plants");
   plant2Model = document.querySelector("#plant2");
@@ -53,19 +56,30 @@ window.addEventListener("DOMContentLoaded",function() {
 
   window.addEventListener("keypress",function(e){
     if(e.key == " "){
-      mainCamera.setAttribute("light","type:point;castShadow:true;intensity:10;");
+      mainCamera.setAttribute("light","type:spot;castShadow:true;intensity:3;angle:35;distance:20;");
+      lightON = true;
     }else if(e.key == "q"){
-      mainCamera.setAttribute("light", "type:point;castShadow:true;intensity:0;");
+      mainCamera.setAttribute("light", "type:spot;castShadow:true;intensity:0;");
+      lightON = false;
     }
   })
+
+
+
+    
+  
+
 
   Rocket.addEventListener("click", ()=>{
     if(totalParts >= 15){
       console.log("Fixed");
+      mainCamera.setAttribute("position", "0 30 0");
+      mainCamera.setAttribute("wasd-controls-enabled", "false");
+      mainCamera.setAttribute("light", "type:ambient;intensity:1");
     }else if(totalParts < 15){
       console.log("Missing Parts");
     }
-  })
+})
   countTime();
   partCount();
   loop();
@@ -92,10 +106,16 @@ function loop(){
   }
 
   for(let alien of aliens){
-    alien.stop();
-    if(distance(mainCamera, alien.obj) < 5){
+    
+    if(distance(mainCamera, alien.obj) < 10 && lightON == true){
     alien.rotateTowards(mainCamera);
     alien.forward();
+    }else{
+      alien.stop();
+      alien.roam();
+    }
+
+  
 
     if(distance(mainCamera, alien.obj)< 2.3 && cooldown == 0){
       heart -= 1;
@@ -114,7 +134,7 @@ function loop(){
       console.log("Game Over");
     }
     
-  }
+  
   }
 
   for(let scrap of scraps){

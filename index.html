@@ -22,6 +22,8 @@
       <a-img id="dirt" src="dirt.jpg"></a-img>
       <a-img id="heart" src="heart.png"></a-img>
       <a-img id="EmptyHeart" src="h_eart.png"></a-img>
+      <a-img src="astroHelm.webp"></a-img>
+      <a-img src="galaxyBK.jpg"></a-img>
       </a-asset>
       <a-entity environment="preset:yavapai;fog:0;shadow:true;shadowSize:4;light-position:100;lighting:none;stageSize:220;groundYScale:5;skyType:color;skyColor:black;"></a-entity>
       <a-sky color="#000000"></a-sky>
@@ -39,8 +41,16 @@
         <a-cylinder  position="0 0 0" radius=".1" length="1.2" rotation="90 40 180" color="brown"></a-cylinder>
         </a-entity>
       </a-entity>
-      <a-box id="point1" position="0 1 0"></a-box>
-      <a-box id="point2" position="-10 1 8"></a-box>
+
+      <a-box id="point1" position="0 1 0" opacity="0"></a-box>
+      <a-box id="point2" position="-10 1 8" opacity="0"></a-box>
+      <a-box id="point3" position="-15 1 -5" opacity="0"></a-box>
+      <a-box id="point4" position="6 1 8" opacity="0"></a-box>
+      <a-box id="point5" position="-15 1 15" opacity="0"></a-box>
+      <a-box id="point6" position="-10 1 -12" opacity="0"></a-box>
+
+      <a-sphere id="winnerCircle" radius="6.7" src="galaxyBK.jpg" side="double"position="0 30 0"></a-sphere>
+
       <a-entity position="-10 0 12" id="AlienHouses">
         <a-sphere shadow="receive: true" src="#dirt" position="3 .2 -2" rotation="0 0 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
         <a-sphere  shadow="receive: true" src="#dirt" position="-5 .2 -9" rotation="0 110 0" phi-start="0" phi-length="330" radius="3" side="double"></a-sphere>
@@ -63,13 +73,14 @@
       <a-gltf-model src="#rock" scale="3 3 3" position="-5 -90 -5"></a-gltf-model>
       
              
-      <a-camera id="mainCamera" light="type:point;castShadow:true;intensity:0;" position="30 2.2 0">
+      <a-camera id="mainCamera" wasd-controls="enabled: true;acceleration: 30;" position="30 2.2 0">
           <a-cursor>
             <a-image id="heart1" scale=".3 .3 .3" src="#heart" position="3.3 1.5 -1"></a-image>
             <a-image id="heart2" scale=".3 .3 .3" src="#heart" position="3 1.5 -1"></a-image>
             <a-image id="heart3" scale=".3 .3 .3" src="#heart" position="2.7 1.5 -1"></a-image>
             <a-image id="heart4" scale=".3 .3 .3" src="#heart" position="2.4 1.5 -1"></a-image>
             <a-image id="heart5" scale=".3 .3 .3" src="#heart" position="2.1 1.5 -1"></a-image>
+            <!-- <a-image src="astroHelm.webp" position="0 0 0" scale="4 2.1 4"></a-image> -->
             <a-text id="time" value="Time Elapsed: " position="-3.3 1.6 -1" width="2"></a-text>
             <a-text id="collected_parts" value="Scraps Collected: " position="-3.3 1.5 -1" width="2"></a-text>
           </a-cursor>
