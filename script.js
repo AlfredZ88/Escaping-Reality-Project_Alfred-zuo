@@ -1,18 +1,16 @@
 let rnd = (l,u) => Math.random() * (u-l) + l;
 let scene, mainCamera, time, m = 0, s = 0, scrapMetal, sm = 0, totalParts = 0, heart = 5;
 let aliens = [], plants=[], rocks=[], scraps = [], plantsModel, plant2Model, collected_parts, Rocket;
-let heart1, heart2, heart3, heart4, heart5, cooldown = 200, lightON = false; // point1, point2, point3;
+let heart1, heart2, heart3, heart4, heart5, cooldown = 100, lightON = false, GameOver; // point1, point2, point3;
 
 window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene");
+  GameOver = document.querySelector("#GameOver");
   heart1 = document.querySelector("#heart1");
   heart2 = document.querySelector("#heart2");
   heart3 = document.querySelector("#heart3");
   heart4 = document.querySelector("#heart4");
   heart5 = document.querySelector("#heart5");
-  // point1 = document.querySelector("#point1");
-  // point2 = document.querySelector("#point2");
-  point3 = document.querySelector("#point3");
   Rocket = document.querySelector("#Rocket");
   plantsModel = document.querySelector("#plants");
   plant2Model = document.querySelector("#plant2");
@@ -65,19 +63,12 @@ window.addEventListener("DOMContentLoaded",function() {
   })
 
 
-
-    
-  
-
-
   Rocket.addEventListener("click", ()=>{
     if(totalParts >= 15){
-      console.log("Fixed");
       mainCamera.setAttribute("position", "0 30 0");
       mainCamera.setAttribute("wasd-controls-enabled", "false");
       mainCamera.setAttribute("light", "type:ambient;intensity:1");
-    }else if(totalParts < 15){
-      console.log("Missing Parts");
+      mainCamera.setAttribute("text", "value: You Won!, Thank You For Playing!");
     }
 })
   countTime();
@@ -119,7 +110,7 @@ function loop(){
 
     if(distance(mainCamera, alien.obj)< 2.3 && cooldown == 0){
       heart -= 1;
-      cooldown = 200;
+      cooldown = 100;
 
     }if(heart == 4){
       heart5.setAttribute("src", "h_eart.png");
@@ -131,7 +122,10 @@ function loop(){
       heart2.setAttribute("src", "h_eart.png");
     }else if(heart == 0){
       heart1.setAttribute("src", "h_eart.png");
-      console.log("Game Over");
+      mainCamera.setAttribute("position", "0 0.5 -1");
+      mainCamera.setAttribute("wasd-controls-enabled", "false");
+      alien.stop();
+      GameOver.setAttribute("opacity", "1");
     }
     
   

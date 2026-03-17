@@ -24,6 +24,7 @@
       <a-img id="EmptyHeart" src="h_eart.png"></a-img>
       <a-img src="astroHelm.webp"></a-img>
       <a-img src="galaxyBK.jpg"></a-img>
+      <a-img id="lowHP" src="low_hp.png"></a-img>
       </a-asset>
       <a-entity environment="preset:yavapai;fog:0;shadow:true;shadowSize:4;light-position:100;lighting:none;stageSize:220;groundYScale:5;skyType:color;skyColor:black;"></a-entity>
       <a-sky color="#000000"></a-sky>
@@ -82,6 +83,8 @@
             <a-image id="heart5" scale=".3 .3 .3" src="#heart" position="2.1 1.5 -1"></a-image>
             <!-- <a-image src="astroHelm.webp" position="0 0 0" scale="4 2.1 4"></a-image> -->
             <a-text id="time" value="Time Elapsed: " position="-3.3 1.6 -1" width="2"></a-text>
+            <a-text id="GameOver" value="You Died! 
+            Refresh To Try Again." position="0 0 0" width="4" align="center" opacity="0"></a-text>
             <a-text id="collected_parts" value="Scraps Collected: " position="-3.3 1.5 -1" width="2"></a-text>
           </a-cursor>
         </a-camera>

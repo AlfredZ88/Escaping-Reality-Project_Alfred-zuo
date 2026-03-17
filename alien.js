@@ -35,6 +35,7 @@ class Alien{
       this.obj.object3D.position.x += dx;
       this.obj.object3D.position.z += dz; 
       this.obj.setAttribute("animation-mixer",{clip:this.charge, timeScale:1});
+      
   }
   stop(){
     this.obj.setAttribute("animation-mixer",{timeScale:0});
