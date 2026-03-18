@@ -52,6 +52,7 @@ window.addEventListener("DOMContentLoaded",function() {
     scraps.push(scrap);
   }
 
+
   window.addEventListener("keypress",function(e){
     if(e.key == " "){
       mainCamera.setAttribute("light","type:spot;castShadow:true;intensity:3;angle:35;distance:20;");
@@ -68,7 +69,6 @@ window.addEventListener("DOMContentLoaded",function() {
       mainCamera.setAttribute("position", "0 30 0");
       mainCamera.setAttribute("wasd-controls-enabled", "false");
       mainCamera.setAttribute("light", "type:ambient;intensity:1");
-      mainCamera.setAttribute("text", "value: You Won!, Thank You For Playing!");
     }
 })
   countTime();
@@ -112,20 +112,20 @@ function loop(){
       heart -= 1;
       cooldown = 100;
 
-    }if(heart == 4){
+    }else if(heart == 4){
       heart5.setAttribute("src", "h_eart.png");
-    }if(heart == 3){
+    }else if(heart == 3){
       heart4.setAttribute("src", "h_eart.png");
-    }if(heart == 2){
+    }else if(heart == 2){
       heart3.setAttribute("src", "h_eart.png");
-    }if(heart == 1){
+    }else if(heart == 1){
       heart2.setAttribute("src", "h_eart.png");
     }else if(heart == 0){
       heart1.setAttribute("src", "h_eart.png");
       mainCamera.setAttribute("position", "0 0.5 -1");
       mainCamera.setAttribute("wasd-controls-enabled", "false");
       alien.stop();
-      GameOver.setAttribute("opacity", "1");
+      GameOver.setAttribute("visible", "true");
     }
     
   

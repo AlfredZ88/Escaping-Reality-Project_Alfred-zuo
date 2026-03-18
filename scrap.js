@@ -13,7 +13,7 @@ class Scrap{
     
     this.obj.addEventListener("click", ()=>{
       if(distance(mainCamera, this.obj) < 2.7){
-        totalParts += 1;
+        totalParts += 15;
         this.obj.setAttribute("position", "0 -10 0")
         partCount();
       }
