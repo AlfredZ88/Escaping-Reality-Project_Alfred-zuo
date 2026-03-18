@@ -9,15 +9,16 @@ html,body{
   justify-content: center;
   align-items: center;
   background-color: #9b7653;
-  color:white;
+  color:#654321;
 }
 
 #banner h1{
-  text-shadow: 1px 1px black;
+  text-shadow: .2px .2px white;
   font-style: oblique;
+
 }
 .button{
-  background-color: blue;
+  background-color: #C45508;
   color:white;
   padding:10px;
   margin:10px;
@@ -60,6 +61,10 @@ html,body{
 #description{
   flex:1;
   text-align:center;
+}
+#description p{
+  font-size:20px;
+  font-weight:bold;
 }
 #description li{
   font-size:18px;
