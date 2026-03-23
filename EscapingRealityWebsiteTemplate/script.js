@@ -1,11 +1,12 @@
 let rnd = (l,u) => Math.random() * (u-l) + l;
 let scene, mainCamera, time, m = 0, s = 0, scrapMetal, sm = 0, totalParts = 0, heart = 5;
 let aliens = [], plants=[], rocks=[], scraps = [], plantsModel, plant2Model, collected_parts, Rocket;
-let heart1, heart2, heart3, heart4, heart5, cooldown = 100, lightON = false, GameOver; // point1, point2, point3;
+let heart1, heart2, heart3, heart4, heart5, cooldown = 100, lightON = false, GameOver, YouWin; // point1, point2, point3;
 
 window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene");
   GameOver = document.querySelector("#GameOver");
+  YouWin = document.querySelector("#YouWin");
   heart1 = document.querySelector("#heart1");
   heart2 = document.querySelector("#heart2");
   heart3 = document.querySelector("#heart3");
@@ -55,13 +56,17 @@ window.addEventListener("DOMContentLoaded",function() {
 
   window.addEventListener("keypress",function(e){
     if(e.key == " "){
-      mainCamera.setAttribute("light","type:spot;castShadow:true;intensity:3;angle:35;distance:20;");
+      lightON = !lightON;
+
+      if(lightON == true){
+      mainCamera.setAttribute("light", {type:"spot", castShadow:true, intensity:3, angle:35, distance:20});
       lightON = true;
-    }else if(e.key == "q"){
-      mainCamera.setAttribute("light", "type:spot;castShadow:true;intensity:0;");
+    }else{
+      mainCamera.setAttribute("light", {type:"spot", castShadow:true, intensity:0});
       lightON = false;
     }
-  })
+    }
+  });
 
 
   Rocket.addEventListener("click", ()=>{
@@ -69,6 +74,7 @@ window.addEventListener("DOMContentLoaded",function() {
       mainCamera.setAttribute("position", "0 30 0");
       mainCamera.setAttribute("wasd-controls-enabled", "false");
       mainCamera.setAttribute("light", "type:ambient;intensity:1");
+      YouWin.setAttribute("visible", "true");
     }
 })
   countTime();

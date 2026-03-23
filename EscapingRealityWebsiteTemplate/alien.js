@@ -15,7 +15,6 @@ class Alien{
         scene.append(this.obj);
 
     }
-    // All FROM FNAF GAME - Start
     angleTo(that){
       let dx = that.object3D.position.x - this.obj.object3D.position.x;
       let dz = that.object3D.position.z - this.obj.object3D.position.z;
@@ -40,7 +39,6 @@ class Alien{
   stop(){
     this.obj.setAttribute("animation-mixer",{timeScale:0});
   }
-  // All FROM FNAF GAME - End
   
      roam(){
         let point1 = document.querySelector("#point1");
